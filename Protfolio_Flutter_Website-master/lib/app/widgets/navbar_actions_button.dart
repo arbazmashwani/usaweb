@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/app/sections/Authentication/aboutpage.dart';
 import 'package:mysite/app/sections/Authentication/dashboard.dart';
+import 'package:mysite/app/sections/Authentication/login.dart';
+import 'package:mysite/app/sections/Authentication/loginmain.dart';
 import 'package:mysite/app/sections/Authentication/membership.dart';
 import 'package:mysite/core/animations/entrance_fader.dart';
 import 'package:mysite/core/color/colors.dart';
@@ -44,11 +46,19 @@ class _NavBarActionButtonState extends State<NavBarActionButton> {
           },
           onTap: () {
             if (widget.index == 0) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomePagelogin(
+                            email: "",
+                          )));
             } else if (widget.index == 1) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomePagelogin(
+                            email: "",
+                          )));
             } else if (widget.index == 2) {
               Navigator.push(
                   context,

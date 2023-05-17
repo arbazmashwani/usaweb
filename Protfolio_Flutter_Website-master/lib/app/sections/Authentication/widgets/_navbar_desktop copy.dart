@@ -1,4 +1,4 @@
-part of '../main_section.dart';
+part of '../loginmain.dart';
 
 class _NavbarDesktop extends StatefulWidget {
   const _NavbarDesktop({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
+                SizedBox(
                   height: 40,
                   width: 80,
                   child: ColorChageButton(
@@ -43,14 +43,14 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => HomePagelogin(
-                                    email: "",
+                                    email: '',
                                   )));
                     },
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             InkWell(

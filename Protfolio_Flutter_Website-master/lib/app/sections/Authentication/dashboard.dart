@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:line_icons/line_icons.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:mysite/app/sections/profile/myprofile.dart';
+import 'package:mysite/app/sections/Authentication/action_button.dart';
+import 'package:mysite/app/sections/Authentication/signals/signalsmain.dart';
+import 'package:mysite/app/widgets/navbar_logo.dart';
+
 import 'package:mysite/core/res/responsive.dart';
 
 // ignore: must_be_immutable
@@ -21,7 +24,28 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final driversrefrence = FirebaseDatabase.instance.ref("driversn");
-  List<bool> _selected = List.generate(6, (i) => false);
+  List<bool> _selected = List.generate(8, (i) => false);
+
+  List options = [
+    "Signals",
+    "Education",
+    "Algorithom",
+    "Videos",
+    "More",
+    "Settings",
+    "Notification",
+    "My Profile",
+  ];
+  final List<IconData> iconslist = [
+    Icons.dashboard,
+    Icons.verified,
+    Icons.people,
+    Icons.admin_panel_settings,
+    Icons.report,
+    Icons.settings,
+    Icons.notifications,
+    Icons.report,
+  ];
 
   @override
   void initState() {
@@ -33,109 +57,181 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    const defaultPadding = 16.0;
     final List<Widget> screens = [
-      Container(
-        child: Image.asset(
-          'assets/imgs/5424482.JPG',
-          opacity: const AlwaysStoppedAnimation<double>(0.2),
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height,
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-        ),
-      ),
-      Container(color: Colors.grey[300]),
-      Container(color: Colors.grey[300]),
-      Container(color: Colors.grey[300]),
-      Container(color: Colors.grey[300]),
-      const MyProfile()
+      const SignalsMainPage(),
+      Container(),
+      Container(),
+      Container(),
+      Container(),
+      Container(),
     ];
     callScreens() {
       return screens[widget.index];
     }
 
-    iconlistreturn() {
-      return ListView.builder(
-          itemCount: iconlist.length,
-          itemBuilder: ((context, index) {
-            return drawertile(
-                _selected[index] ? Colors.black : Colors.grey[200] as Color,
-                context,
-                iconlist[index],
-                options[index], () {
-              setState(() {
-                _selected =
-                    List.filled(_selected.length, false, growable: true);
-                _selected[index] = !_selected[index];
-
-                widget.index = index;
-                callScreens();
-              });
-            }, _selected[index]);
-          }));
-    }
-
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 100,
-        title: IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 60,
-                child: Image.asset(
-                  "assets/imgs/TradeXGreen.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: VerticalDivider(
-                  color: Colors.white,
-                  thickness: 2,
-                ),
-              ),
-              Text(
-                "My TradeX Dashboard",
-                style: TextStyle(
-                  color: const Color(0xff999999),
-                  fontWeight: FontWeight.w100,
-                  fontSize: Responsive.isDesktop(context) ? 20 : 16,
-                ),
-              )
-            ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.green,
+          child: Icon(
+            Icons.message,
+            color: Colors.white,
           ),
         ),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-                color: Colors.white,
-                width: 80,
+      drawer: Responsive.isMobile(context)
+          ? SizedBox(
+              width: MediaQuery.of(context).size.width * 0.75,
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 420,
-                      child: iconlistreturn(),
+                      height: 20,
+                      child: Container(
+                        color: const Color(0xff343A40),
+                      ),
+                    ),
+                    Container(
+                      color: const Color(0xff343A40),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height:
+                                75 * double.parse(options.length.toString()),
+                            child: ListView.builder(
+                                itemCount: options.length,
+                                itemBuilder: ((context, i) {
+                                  return drawertile(
+                                      _selected[i]
+                                          ? Colors.white
+                                          : const Color(0xff414950),
+                                      context,
+                                      iconslist[i],
+                                      options[i], () {
+                                    setState(() {
+                                      _selected = List.filled(
+                                          _selected.length, false,
+                                          growable: true);
+                                      _selected[i] = !_selected[i];
+
+                                      widget.index = i;
+                                      callScreens();
+                                    });
+                                    Navigator.pop(context);
+                                  }, _selected[i]);
+                                })),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
-                )),
-          ),
-          Expanded(
-              flex: 8,
-              child: Container(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(0)),
-                  child: callScreens(),
                 ),
-              )),
+              ),
+            )
+          : Container(),
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selected =
+                      List.filled(_selected.length, false, growable: true);
+                  widget.index = 9;
+                  callScreens();
+                });
+              },
+              child: Container(
+                margin: const EdgeInsets.only(left: defaultPadding),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: defaultPadding,
+                  vertical: defaultPadding / 2,
+                ),
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.white10),
+                ),
+                child: Row(
+                  children: [
+                    Image.network(
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPWhDcrmhvY86Q42jr73c-812hSyMhO3DxTXRt2H6uxgiLKsnktZsZfJ-14AvPaqR01k&usqp=CAU",
+                      height: 38,
+                    ),
+                    if (!Responsive.isMobile(context))
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: defaultPadding / 2),
+                        child: Text("User 123"),
+                      ),
+                    const Icon(Icons.keyboard_arrow_down),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
+        backgroundColor: const Color(0xff343A40),
+        title: Row(
+          children: const [
+            NavBarLogo(),
+          ],
+        ),
+      ),
+      body: Container(
+        color: Colors.transparent,
+        child: Row(
+          children: [
+            Responsive.isTablet(context) || Responsive.isMobile(context)
+                ? Container()
+                : Expanded(
+                    flex: 2,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            color: const Color(0xff343A40),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 75 *
+                                      double.parse(options.length.toString()),
+                                  child: ListView.builder(
+                                      itemCount: options.length,
+                                      itemBuilder: ((context, i) {
+                                        return drawertile(
+                                            _selected[i]
+                                                ? Colors.white
+                                                : const Color(0xff414950),
+                                            context,
+                                            iconslist[i],
+                                            options[i], () {
+                                          setState(() {
+                                            _selected = List.filled(
+                                                _selected.length, false,
+                                                growable: true);
+                                            _selected[i] = !_selected[i];
+
+                                            widget.index = i;
+                                            callScreens();
+                                          });
+                                        }, _selected[i]);
+                                      })),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+            Expanded(flex: 9, child: callScreens())
+          ],
+        ),
       ),
     );
   }
@@ -199,42 +295,32 @@ drawertile(Color color, BuildContext context, IconData icon, String name,
   return Padding(
     padding: const EdgeInsets.only(left: 8, right: 8, top: 5),
     child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Container(
-        color: Colors.white,
-        child: ListTile(
+      color: color,
+      child: ListTile(
 
-            // If current item is selected show blue color
-            title: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: bool ? Colors.red : Colors.grey,
-                ),
-                const SizedBox(width: 15),
-                Text(
-                  name,
-                  style: TextStyle(
-                      fontWeight: bool ? FontWeight.bold : FontWeight.w600,
-                      letterSpacing: 2,
-                      color: bool ? Colors.black : Colors.black54,
-                      fontSize: 15),
-                ),
-              ],
-            ),
-            onTap: function),
-      ),
+// If current item is selected show blue color
+          title: Row(
+            children: [
+              Responsive.isDesktop(context)
+                  ? Container()
+                  : Icon(
+                      icon,
+                      color: bool ? kPrimaryColor : Colors.white,
+                    ),
+              const SizedBox(width: 15),
+              Text(
+                name,
+                style: TextStyle(
+                    letterSpacing: 0,
+                    fontWeight: FontWeight.bold,
+                    color: bool ? kPrimaryColor : Colors.white,
+                    fontSize: 15),
+              ),
+            ],
+          ),
+          onTap: function),
     ),
   );
 }
 
-List options = [
-  "Signals",
-  "Education",
-  "Algorithom",
-  "Videos",
-  "More",
-  "My Profile",
-];
+List options = [];

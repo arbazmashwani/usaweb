@@ -1,4 +1,4 @@
-part of '../main_section.dart';
+part of '../aboutpage.dart';
 
 class _NavbarDesktop extends StatefulWidget {
   const _NavbarDesktop({Key? key}) : super(key: key);

@@ -29,7 +29,7 @@ class ServiceDesktopState extends State<ServiceDesktop> {
                   child: _buildMembershipPlanCard(
                     context,
                     'Signals',
-                    '\$50/month',
+                    '\$100/month',
                     basiclist,
                     false,
                   ),
@@ -39,7 +39,7 @@ class ServiceDesktopState extends State<ServiceDesktop> {
                   child: _buildMembershipPlanCard(
                     context,
                     'Market Scholar',
-                    '\$100/month',
+                    '\$200/month',
                     marketscholarlist,
                     false,
                   ),
@@ -124,7 +124,11 @@ Widget _buildMembershipPlanCard(
                             SizedBox(
                               width: 10,
                             ),
-                            Expanded(child: Text(description[index]))
+                            Expanded(
+                                child: Text(
+                              description[index],
+                              style: TextStyle(color: Colors.white),
+                            ))
                           ],
                         ),
                       );
@@ -159,13 +163,16 @@ Widget _buildMembershipPlanCard(
 
 List<String> basiclist = [
   "Receive all our premium signals",
-  "receive signals to your phone using our app"
+  "receive signals to your phone using our app",
+  "Weekly market forecast where Alec Markarian breaks down how and what is behind the markets moving the prior week and provides a forecast for the week upcoming with potential trade setups every Sunday, with visual charts"
 ];
 
 List<String> marketscholarlist = [
   "Receive all our premium signals",
   "receive signals to your phone using our app",
-  "Full breakdowns and journal of each trade with pictures and descriptors taking you through the full phycology of the trader Alec Markarian, along with a Market Analysis every morning with potential trade setups to look out for"
+  "Full breakdowns and journal of each trade with pictures and descriptors taking you through the full phycology of the trader Alec Markarian, along with a Market Analysis every morning with potential trade setups to look out for",
+  "Daily Market Forecasts by Alec Markarian going deep into the markets on a daily basis and looking at past price action and forecasting future daily moves and providing visual charts for potential trade setups to look out for",
+  "Access to the 'Becoming Market Savant' Book by Alec Markarian which is the ultimate guide to becoming an elite top percentile trader. Alec Markarian shares it all in this book."
 ];
 
 List<String> marketsavant = [
@@ -173,5 +180,6 @@ List<String> marketsavant = [
   "Receive all our premium signals",
   "receive signals to your phone using our app",
   "Full breakdowns and journal of each trade with pictures and descriptors taking you through the full phycology of the trader Alec Markarian, along with a Market Analysis every morning with potential trade setups to look out for",
-  "access to all educational content that is updated regularly and made by Alec Markarian exclusively for TradeX"
+  "access to all educational content that is updated regularly and made by Alec Markarian exclusively for TradeX",
+  "1 on 1 mentorship and messaging with Alec Markarian ask questions about your trades at any time and 1 hour of on the phone time per week"
 ];

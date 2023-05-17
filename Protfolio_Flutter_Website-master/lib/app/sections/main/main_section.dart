@@ -1,11 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysite/app/sections/Authentication/login.dart';
+import 'package:mysite/app/sections/Authentication/loginmain.dart';
 import 'package:mysite/app/sections/Authentication/membership.dart';
 import 'package:mysite/app/widgets/arrow_on_top.dart';
 import 'package:mysite/app/widgets/color_chage_btn.dart';
 import 'package:mysite/changes/links.dart';
-import 'package:mysite/core/animations/zoom_animation.dart';
+
 import 'package:mysite/core/apis/links.dart';
 import 'package:mysite/core/color/colors.dart';
 import 'package:mysite/core/configs/app.dart';
@@ -49,7 +51,8 @@ class _MainPageState extends State<MainPage> {
             vapidKey:
                 "BLvkO070mMQk1QaAIoDUHvccJqO1UNlqsywCmRlAwkLG5MJW9SUKVkDSOUxJk9B-Wubzp5r0NuzzszjoEve9biA"))
         .toString();
-    print(tokenkhan);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("token", tokenkhan);
   }
 
   fetchmydetails() async {

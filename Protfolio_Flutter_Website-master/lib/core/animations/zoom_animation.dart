@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mysite/app/widgets/custom_outline.dart';
 import 'package:mysite/core/theme/app_theme.dart';
@@ -59,44 +60,66 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
     Size size = MediaQuery.of(context).size;
     var theme = Theme.of(context);
 
-    return SizedBox(
-      width: size.width / 4,
-      height: size.width / 4,
-      child: AlignTransition(
-        alignment: _alignAnimation,
-        child: CustomOutline(
-          strokeWidth: 5,
-          radius: size.width * 0.2,
-          padding: const EdgeInsets.all(5),
-          width: size.width * sizeAnimation.value,
-          height: size.width * sizeAnimation.value,
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                theme.secondaryColor,
-                theme.secondaryColor.withOpacity(0),
-                theme.primaryColor.withOpacity(0.1),
-                theme.primaryColor
-              ],
-              stops: const [
-                0.2,
-                0.4,
-                0.6,
-                1
-              ]),
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black.withOpacity(0.8),
-              image: const DecorationImage(
-                fit: BoxFit.cover,
-                alignment: Alignment.bottomLeft,
-                image: AssetImage('assets/imgs/IMG_0107.png'),
-              ),
+    return Center(
+      child: FloatingWidget(
+          child: SizedBox(
+        width: size.width / 6,
+        height: size.width / 6,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(width: 5, color: Colors.white),
+            shape: BoxShape.circle,
+            color: Colors.black.withOpacity(0.8),
+            image: const DecorationImage(
+              fit: BoxFit.cover,
+              alignment: Alignment.bottomLeft,
+              image: (kDebugMode)
+                  ? AssetImage('imgs/IMG_0107.png')
+                  : AssetImage('assets/imgs/IMG_0107.png'),
             ),
           ),
         ),
+      )),
+    );
+  }
+}
+
+class FloatingWidget extends StatefulWidget {
+  final Widget child;
+
+  const FloatingWidget({Key? key, required this.child}) : super(key: key);
+
+  @override
+  _FloatingWidgetState createState() => _FloatingWidgetState();
+}
+
+class _FloatingWidgetState extends State<FloatingWidget> {
+  double _rotateX = 0.0;
+  double _rotateY = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onHover: (event) {
+        setState(() {
+          _rotateX = (event.localPosition.dx - (context.size!.width / 2)) / 100;
+          _rotateY =
+              ((context.size!.height / 2) - event.localPosition.dy) / 100;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          _rotateX = 0.0;
+          _rotateY = 0.0;
+        });
+      },
+      child: Transform(
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, 0.001)
+          ..rotateX(_rotateY)
+          ..rotateY(_rotateX),
+        alignment: Alignment.center,
+        child: widget.child,
       ),
     );
   }
