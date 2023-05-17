@@ -15,55 +15,113 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
     var theme = Theme.of(context);
     return BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
       return Container(
-        padding:
-            EdgeInsets.symmetric(horizontal: size.width / 10, vertical: 12),
-        color: theme.navBarColor,
-        child: Row(
+        height: 300,
+        color: Colors.white,
+        child: Column(
           children: [
-            const NavBarLogo(),
-            Space.xm!,
-            ...NavBarUtils.names.asMap().entries.map(
-                  (e) => NavBarActionButton(
-                    label: e.value,
-                    index: e.key,
+            Container(
+              height: 50,
+              color: Color(0xffF2F5FC),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.chat,
+                        color: Color(0xff8D99B5),
+                      ),
+                      Text(
+                        "Live Chat",
+                        style: TextStyle(
+                            color: Color(0xff8D99B5),
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
-                ),
-            // Space.x!,
-
+                  Container(
+                    width: 30,
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 100,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  const NavBarLogo(),
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.chat,
+                        color: Color(0xff8D99B5),
+                      ),
+                      Text(
+                        "Live Chat",
+                        style: TextStyle(
+                            color: Color(0xff8D99B5),
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Container(
+                    width: 30,
+                  )
+                ],
+              ),
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  height: 40,
-                  width: 80,
-                  child: ColorChageButton(
-                    text: 'Login',
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePagelogin(
-                                    email: "",
-                                  )));
-                    },
-                  ),
+                Space.xm!,
+                ...NavBarUtils.names.asMap().entries.map(
+                      (e) => NavBarActionButton(
+                        label: e.value,
+                        index: e.key,
+                      ),
+                    ),
+                // Space.x!,
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      height: 40,
+                      width: 80,
+                      child: ColorChageButton(
+                        text: 'Login',
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePagelogin(
+                                        email: "",
+                                      )));
+                        },
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(
+                  width: 5,
+                ),
+                InkWell(
+                    onTap: () {
+                      context
+                          .read<ThemeCubit>()
+                          .updateTheme(!state.isDarkThemeOn);
+                    },
+                    child: Image.network(
+                      state.isDarkThemeOn
+                          ? IconUrls.darkIcon
+                          : IconUrls.lightIcon,
+                      height: 30,
+                      width: 20,
+                      color: state.isDarkThemeOn ? Colors.black : Colors.white,
+                    )),
+                // Space.x!,
               ],
             ),
-            SizedBox(
-              width: 5,
-            ),
-            InkWell(
-                onTap: () {
-                  context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
-                },
-                child: Image.network(
-                  state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
-                  height: 30,
-                  width: 20,
-                  color: state.isDarkThemeOn ? Colors.black : Colors.white,
-                )),
-            // Space.x!,
           ],
         ),
       );

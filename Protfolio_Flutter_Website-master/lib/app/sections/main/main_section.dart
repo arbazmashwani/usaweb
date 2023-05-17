@@ -82,7 +82,7 @@ class _MainPageState extends State<MainPage> {
       key: drawerProvider.key,
       extendBodyBehindAppBar: true,
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(120),
+        preferredSize: Size.fromHeight(240),
         child: Responsive(
           desktop: _NavbarDesktop(),
           mobile: _NavBarTablet(),
