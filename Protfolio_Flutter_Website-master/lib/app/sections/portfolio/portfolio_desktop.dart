@@ -23,11 +23,29 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
     return Container(
       child: Column(
         children: [
-          const CustomSectionHeading(text: "Markets"),
+          const Padding(
+            padding: EdgeInsets.only(left: 200, right: 200, top: 100),
+            child: Text(
+              "Our wide range of products caters to a broad spectrum of traders",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50),
+            ),
+          ),
           Space.y(2.w)!,
-          const CustomSectionSubHeading(
-              text:
-                  "We are educating people on trading forex, providing signals, and selling a revolutionary algorithm."),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "The markets we offer",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
+              ),
+            ],
+          ),
 
           // Wrap(
           //   alignment: WrapAlignment.start,
@@ -42,15 +60,32 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
           //       .toList(),
           // ),
           Space.y(2.w)!,
-          SizedBox(
-              height: 200,
-              child: Row(
-                children: [
-                  Expanded(child: ProjectCard(project: projectUtils[0])),
-                  Expanded(child: ProjectCard(project: projectUtils[1])),
-                  Expanded(child: ProjectCard(project: projectUtils[2])),
-                ],
-              )),
+          Padding(
+            padding: const EdgeInsets.only(left: 100, right: 100),
+            child: SizedBox(
+                height: 400,
+                child: Row(
+                  children: [
+                    Expanded(child: ProjectCard(project: projectUtils[0])),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(child: ProjectCard(project: projectUtils[1])),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(child: ProjectCard(project: projectUtils[2])),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(child: ProjectCard(project: projectUtils[2])),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(child: ProjectCard(project: projectUtils[2])),
+                  ],
+                )),
+          ),
         ],
       ),
     );

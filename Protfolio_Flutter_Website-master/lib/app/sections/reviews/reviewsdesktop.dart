@@ -3,237 +3,72 @@ import 'package:mysite/app/widgets/custom_text_heading.dart';
 import 'package:mysite/core/configs/others/space.dart';
 import 'package:sizer/sizer.dart';
 
-class ReviewsDesktop extends StatelessWidget {
+class ReviewsDesktop extends StatefulWidget {
   const ReviewsDesktop({Key? key}) : super(key: key);
 
+  @override
+  State<ReviewsDesktop> createState() => _ReviewsDesktopState();
+}
+
+class _ReviewsDesktopState extends State<ReviewsDesktop> {
+  List<bool> cardhoverlist = List.generate(6, (index) => false).toList();
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Space.y(4.w)!,
-        const CustomSectionHeading(text: "What Clients Say"),
-        const CustomSectionSubHeading(
-            text: "The Reviews of Super Members Clients"),
+        const Padding(
+          padding: EdgeInsets.only(left: 200, right: 200, top: 100),
+          child: Text(
+            "Latest Trade Signals",
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 50),
+          ),
+        ),
+        Space.y(2.w)!,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              "Lorem njasdbhgbvhyubhj hbsahubhibj hshghuguhic gayhugyhubvhjdwjwda sghyughubcsad gyhuvbhjasdbh",
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20),
+            ),
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 0),
           child: SizedBox(
-              height: 600,
+              height: 300,
               child: Row(
-                children: [
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Card(
-                      child: Container(
-                        height: 450,
-                        color: Colors.white,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              top: -60,
-                              child: CircleAvatar(
-                                radius: 60,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7I14mBT2c98BdiVLoa5Pjpw-b_gTiWlrOUA&usqp=CAU",
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [0, 1, 2, 3, 4, 5]
+                      .map((e) => InkWell(
+                            onTap: () {},
+                            onHover: (value) {
+                              setState(() {
+                                cardhoverlist[e] = value;
+                              });
+                            },
+                            child: Card(
+                              elevation: cardhoverlist[e] == true ? 10 : 0,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 300,
+                                  width: 200,
+                                  child: Image.asset(
+                                    "assets/imgs/signals.png",
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
                             ),
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              bottom: 0,
-                              top: 0,
-                              child: Column(
-                                children: const [
-                                  SizedBox(
-                                    height: 70,
-                                  ),
-                                  Text(
-                                    "Arbaz Mashwani",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "Hammad164598@gmail.com",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: Color(0xffF8B600),
-                                    child: Icon(
-                                      Icons.reviews_outlined,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                    style: TextStyle(color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Card(
-                      child: Container(
-                        height: 450,
-                        color: Colors.white,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              top: -60,
-                              child: CircleAvatar(
-                                radius: 60,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7I14mBT2c98BdiVLoa5Pjpw-b_gTiWlrOUA&usqp=CAU",
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              bottom: 0,
-                              top: 0,
-                              child: Column(
-                                children: const [
-                                  SizedBox(
-                                    height: 70,
-                                  ),
-                                  Text(
-                                    "Arbaz Mashwani",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "Hammad164598@gmail.com",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: Color(0xffF8B600),
-                                    child: Icon(
-                                      Icons.reviews_outlined,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                    style: TextStyle(color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Card(
-                      child: Container(
-                        height: 450,
-                        color: Colors.white,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              top: -60,
-                              child: CircleAvatar(
-                                radius: 60,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7I14mBT2c98BdiVLoa5Pjpw-b_gTiWlrOUA&usqp=CAU",
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              left: 50,
-                              right: 50,
-                              bottom: 0,
-                              top: 0,
-                              child: Column(
-                                children: const [
-                                  SizedBox(
-                                    height: 70,
-                                  ),
-                                  Text(
-                                    "Arbaz Mashwani",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "Hammad164598@gmail.com",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: Color(0xffF8B600),
-                                    child: Icon(
-                                      Icons.reviews_outlined,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                    style: TextStyle(color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-                ],
-              )),
+                          ))
+                      .toList())),
         ),
       ],
     );

@@ -55,6 +55,12 @@
     });
     
   </script>
+  <script>
+     window.addEventListener('beforeinstallprompt', function (e) {
+     e.preventDefault();
+     return false;
+     });
+  </script>
    <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
@@ -91,6 +97,8 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
+    
+    <script src="main.dart.js" type="application/javascript"></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <meta name="google-signin-client_id" content="334985763345-je8eaoktlpm558nmqk6hqv84l8gqq4af.apps.googleusercontent.com">
 </body>

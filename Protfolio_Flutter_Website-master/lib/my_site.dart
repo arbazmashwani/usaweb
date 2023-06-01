@@ -78,13 +78,10 @@ class UserProvider extends ChangeNotifier {
       if (databaseEvent.snapshot.value != null) {
         Map<String, dynamic> map = databaseEvent.snapshot.value as dynamic;
         List storesdocs = [];
+        // ignore: unnecessary_null_comparison
         storesdocs.add(map == null ? [] : map.values.toList());
         _user = storesdocs;
-        print("object");
-        print(_user.length);
-      } else {
-        print("object null");
-      }
+      } else {}
     });
     notifyListeners();
   }

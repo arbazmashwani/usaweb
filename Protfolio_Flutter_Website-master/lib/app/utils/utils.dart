@@ -6,6 +6,7 @@ import 'package:mysite/app/sections/home/home.dart';
 import 'package:mysite/app/sections/portfolio/portfolio.dart';
 import 'package:mysite/app/sections/reviews/reviewspage.dart';
 import 'package:mysite/app/sections/services/services.dart';
+import 'package:mysite/app/sections/tradeinfo/services.dart';
 import 'package:mysite/app/utils/contact_utils.dart';
 import 'package:mysite/app/widgets/footer.dart';
 
@@ -14,6 +15,7 @@ class BodyUtils {
     const HomePage(),
     // About(),
     const Portfolio(),
+    const TradeInformationPage(),
     const Services(),
     const ExperiencePage(),
     const CallRequest(),

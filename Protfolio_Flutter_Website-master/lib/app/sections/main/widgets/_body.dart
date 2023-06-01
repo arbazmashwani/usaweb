@@ -6,7 +6,8 @@ class _Body extends StatelessWidget {
     final scrollProvider = Provider.of<ScrollProvider>(context);
 
     return ScrollablePositionedList.builder(
-      padding: EdgeInsets.all(0),
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.only(top: 0),
       itemCount: BodyUtils.views.length,
       itemBuilder: (context, index) => BodyUtils.views[index],
       itemScrollController: scrollProvider.itemScrollController,

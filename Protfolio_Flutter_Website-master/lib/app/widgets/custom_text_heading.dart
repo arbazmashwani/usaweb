@@ -12,7 +12,7 @@ class CustomSectionHeading extends StatelessWidget {
     return Responsive(
       desktop: Text(
         text,
-        style: const TextStyle(fontSize: 56),
+        style: const TextStyle(fontSize: 56, color: Colors.black),
       ),
       tablet: Text(
         text,
@@ -40,7 +40,7 @@ class CustomSectionSubHeading extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: theme.textColor.withOpacity(0.6),
+          color: Colors.black,
           fontSize: 18,
         ),
       ),

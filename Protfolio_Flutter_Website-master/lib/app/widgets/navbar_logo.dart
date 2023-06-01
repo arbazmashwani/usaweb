@@ -20,27 +20,19 @@ class NavBarLogo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.black, borderRadius: BorderRadius.circular(12)),
             height: 60,
-            child: Image.asset(
-              "assets/imgs/TradeXGreen.png",
-              fit: BoxFit.cover,
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                "assets/imgs/TradeXGreen.png",
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: VerticalDivider(
-              color: Colors.white,
-              thickness: 1,
-            ),
-          ),
-          Text(
-            "The Enlightened",
-            style: TextStyle(
-                color: const Color(0xff999999),
-                fontWeight: FontWeight.w100,
-                fontSize: 16),
-          )
         ],
       ),
     );

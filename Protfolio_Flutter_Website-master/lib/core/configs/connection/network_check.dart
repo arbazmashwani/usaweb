@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysite/app/sections/Authentication/dashboard.dart';
 import 'package:mysite/app/sections/main/main_section.dart';
 import 'bloc/connected_bloc.dart';
 
@@ -20,8 +21,11 @@ class NChecking extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ConnectedSucessState) {
-          return const MainPage();
-          // return const MainScreen();
+          return
+              //  DashboardScreen(
+              //   index: 4,
+              // );
+              MainPage();
         }
         // else if (state is ConnectedFailureState) {
         //   return const NoConnectionErorr();
@@ -30,7 +34,10 @@ class NChecking extends StatelessWidget {
           // return Container();
           // TODO
           // return const NoConnectionErorr();
-          return const MainPage();
+          return MainPage();
+          // DashboardScreen(
+          //   index: 4,
+          // );
         }
       },
     );
@@ -42,11 +49,11 @@ class NoConnectionErorr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             // LoadingAnimationWidget.staggeredDotsWave(
             //     color: primaryColor, size: 50.0),
             // SizedBox(height: 3.h),

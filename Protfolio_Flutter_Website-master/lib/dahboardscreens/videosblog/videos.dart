@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:mysite/app/sections/Authentication/dashboard.dart';
 import 'package:uuid/uuid.dart';
 
-class SignalsMainPage extends StatefulWidget {
-  const SignalsMainPage({super.key});
+class VideosBloagMain extends StatefulWidget {
+  const VideosBloagMain({super.key});
 
   @override
-  State<SignalsMainPage> createState() => _SignalsMainPageState();
+  State<VideosBloagMain> createState() => _VideosBloagMainState();
 }
 
-class _SignalsMainPageState extends State<SignalsMainPage> {
+class _VideosBloagMainState extends State<VideosBloagMain> {
   late DatabaseReference _databaseReference;
   final SignalRefrence = FirebaseDatabase.instance.ref("Signals");
   final List<dynamic> _listItems = [];
@@ -46,15 +46,15 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 50, right: 20, top: 10, bottom: 20),
+                  padding:
+                      EdgeInsets.only(left: 50, right: 20, top: 10, bottom: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
-                        "Signals",
+                        "Videos Blog",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -131,10 +131,7 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                               color: Colors
                                                   .blue, // Set your desired background color
                                               child: Image.network(
-                                                snapshot
-                                                    .child("picture")
-                                                    .value
-                                                    .toString(),
+                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WPcdIBl0kFQVdm4qTWpUsDSdH09s47Ifwg&usqp=CAU",
                                                 fit: BoxFit.fill,
                                               )),
                                         )),
@@ -143,20 +140,16 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(15.0),
-                                              child: Container(
+                                              child: SizedBox(
                                                 child: Column(
                                                   children: [
-                                                    Row(
+                                                    const Row(
                                                       children: [
                                                         Expanded(
                                                           child: Text(
-                                                            snapshot
-                                                                .child(
-                                                                    "textnote")
-                                                                .value
-                                                                .toString(),
+                                                            "My first Video Blog On forex trading",
                                                             maxLines: 2,
-                                                            style: const TextStyle(
+                                                            style: TextStyle(
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
@@ -169,20 +162,6 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                                     ),
                                                     Row(
                                                       children: [
-                                                        Text(
-                                                          index.isEven
-                                                              ? "BUY"
-                                                              : "SELL",
-                                                          maxLines: 2,
-                                                          style: TextStyle(
-                                                            color: themecolor,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 30,
-                                                        ),
                                                         Icon(
                                                           Icons
                                                               .favorite_rounded,
@@ -203,6 +182,17 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                                       height: 10,
                                                     ),
                                                     ListTile(
+                                                      trailing: Icon(
+                                                        index.isEven
+                                                            ? Icons
+                                                                .favorite_outline
+                                                            : Icons
+                                                                .favorite_rounded,
+                                                        size: 30,
+                                                        color: index.isEven
+                                                            ? themecolor
+                                                            : Colors.red,
+                                                      ),
                                                       dense: true,
                                                       leading:
                                                           const CircleAvatar(
@@ -229,19 +219,8 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                         Expanded(
                                             flex: 2,
                                             child: Container(
-                                              child: Column(
-                                                children: [
-                                                  Icon(
-                                                    index.isEven
-                                                        ? Icons.favorite_outline
-                                                        : Icons
-                                                            .favorite_rounded,
-                                                    size: 30,
-                                                    color: index.isEven
-                                                        ? themecolor
-                                                        : Colors.red,
-                                                  )
-                                                ],
+                                              child: const Column(
+                                                children: [],
                                               ),
                                             )),
                                       ],
@@ -285,10 +264,10 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                       Row(
                         children: [
                           const SizedBox(width: 20),
-                          SizedBox(
+                          const SizedBox(
                             width: 50,
                             child: Column(
-                              children: const [
+                              children: [
                                 CircleAvatar(
                                   radius: 30.0,
                                   backgroundImage: NetworkImage(
@@ -317,8 +296,8 @@ class _SignalsMainPageState extends State<SignalsMainPage> {
                                   ),
                                 ),
                                 Container(
-                                  child: Row(
-                                    children: const [
+                                  child: const Row(
+                                    children: [
                                       Icon(
                                         Icons.photo,
                                         color: Colors.blue,

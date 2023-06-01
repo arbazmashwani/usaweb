@@ -16,10 +16,30 @@ class ServiceDesktopState extends State<ServiceDesktop> {
     return Container(
       child: Column(
         children: [
-          Space.y(10.w)!,
-          const CustomSectionHeading(text: 'Memberships Plans'),
+          Space.y(4.w)!,
+          const Padding(
+            padding: EdgeInsets.only(left: 200, right: 200, top: 100),
+            child: Text(
+              "Memberships Plans",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50),
+            ),
+          ),
           Space.y(1.w)!,
-          CustomSectionSubHeading(text: servicesSubHeading),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                servicesSubHeading,
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
+              ),
+            ],
+          ),
           Space.y(2.w)!,
           Container(
             child: Row(
@@ -27,31 +47,25 @@ class ServiceDesktopState extends State<ServiceDesktop> {
                 Expanded(
                     child: Container(
                   child: _buildMembershipPlanCard(
-                    context,
-                    'Signals',
-                    '\$100/month',
-                    basiclist,
-                    false,
+                    description: basiclist,
+                    title: "Signals",
+                    subtitle: "\$100/month",
                   ),
                 )),
                 Expanded(
                     child: Container(
                   child: _buildMembershipPlanCard(
-                    context,
-                    'Market Scholar',
-                    '\$200/month',
-                    marketscholarlist,
-                    false,
+                    description: marketscholarlist,
+                    title: "Market Scholar",
+                    subtitle: "\$200/month",
                   ),
                 )),
                 Expanded(
                     child: Container(
                   child: _buildMembershipPlanCard(
-                    context,
-                    'Market Savant',
-                    '\$500/month',
-                    marketsavant,
-                    false,
+                    description: marketsavant,
+                    title: "Market Savant",
+                    subtitle: "\$500/month",
                   ),
                 )),
               ],
@@ -63,102 +77,152 @@ class ServiceDesktopState extends State<ServiceDesktop> {
   }
 }
 
-Widget _buildMembershipPlanCard(
-  BuildContext context,
-  String title,
-  String subtitle,
-  List description,
-  bool isRecommended,
-) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      decoration: BoxDecoration(
-          color: Colors.black, borderRadius: BorderRadius.circular(12)),
-      height: 600,
-      child: Padding(
-        padding: const EdgeInsets.all(0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ],
-            ),
-            AnimatedOpacity(
-              opacity: 1,
-              duration: Duration(microseconds: 499),
-              child: Container(
-                height: 100,
-                color: const Color(0xff292A38).withOpacity(0.5),
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    subtitle,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: description.length,
-                    padding: const EdgeInsets.all(0),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.done,
-                              color: Colors.green,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                                child: Text(
-                              description[index],
-                              style: TextStyle(color: Colors.white),
-                            ))
-                          ],
-                        ),
-                      );
-                    })),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+class _buildMembershipPlanCard extends StatefulWidget {
+  _buildMembershipPlanCard(
+      {super.key,
+      this.title,
+      this.subtitle,
+      this.isRecommended,
+      required this.description});
+  String? title;
+  String? subtitle;
+  List? description;
+  bool? isRecommended;
+
+  @override
+  State<_buildMembershipPlanCard> createState() =>
+      __buildMembershipPlanCardState();
+}
+
+class __buildMembershipPlanCardState extends State<_buildMembershipPlanCard> {
+  bool ishover = false;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {},
+        onHover: (ishovering) {
+          if (mounted) {
+            setState(() => ishover = ishovering);
+          }
+        },
+        child: Card(
+          elevation: ishover == true ? 10 : 1,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+                12.0), // Adjust the value as per your preference
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Color(0xffF4F6F9)),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12)),
+            height: 700,
+            child: Padding(
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MaterialButton(
-                    onPressed: () {},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        widget.title.toString(),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  AnimatedOpacity(
+                    opacity: 1,
+                    duration: Duration(microseconds: 499),
                     child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.blue),
+                      height: 100,
+                      color: ishover == true
+                          ? const Color(0xff1C4BBA)
+                          : Colors.grey[200],
+                      width: double.infinity,
                       child: Center(
-                        child: Text("Get Started"),
+                        child: Text(
+                          widget.subtitle.toString(),
+                          style: TextStyle(
+                              color: ishover != true
+                                  ? const Color(0xff1C4BBA)
+                                  : Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
+                  Expanded(
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: widget.description!.length,
+                          padding: const EdgeInsets.all(0),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.done,
+                                    color: Colors.green,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    widget.description![index],
+                                    style: TextStyle(color: Colors.black),
+                                  ))
+                                ],
+                              ),
+                            );
+                          })),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 100),
+                          height: 50,
+                          width: 200,
+                          child: Center(
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ishover != true
+                                    ? const Color(0xff1C4BBA)
+                                    : Colors.white,
+                              ),
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                              color: ishover == true
+                                  ? const Color(0xff1C4BBA)
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              border:
+                                  Border.all(color: const Color(0xff1C4BBA))),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 List<String> basiclist = [

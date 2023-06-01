@@ -29,87 +29,90 @@ class ContactDesktop extends StatelessWidget {
             text: "If you want to avail our services , Subsrcribe service now",
           ),
           Space.y(2.w)!,
-          Container(
-            padding: EdgeInsets.all(size.width * 0.05).copyWith(bottom: 10),
-            decoration: BoxDecoration(
-              gradient: theme.contactCard,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [blackColorShadow],
-            ),
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          contactHeadding,
-                          style: TextStyle(
-                            height: 1.2,
-                            fontSize: 6.sp,
-                            fontWeight: FontWeight.w600,
+          Padding(
+            padding: const EdgeInsets.only(left: 50, right: 50),
+            child: Container(
+              padding: EdgeInsets.all(size.width * 0.05).copyWith(bottom: 10),
+              decoration: BoxDecoration(
+                gradient: theme.contactCard,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [blackColorShadow],
+              ),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            contactHeadding,
+                            style: TextStyle(
+                              height: 1.2,
+                              fontSize: 6.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
 
-                        Space.y(1.w)!,
-                        Text(
-                          contactSubHeadding,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w100,
+                          Space.y(1.w)!,
+                          Text(
+                            contactSubHeadding,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w100,
+                            ),
                           ),
-                        ),
-                        Space.y(2.w)!,
-                        // SizedBox(height: AppDimensions.space(3)),
-                      ],
-                    ),
-                    InkWell(
-                      onTap: () => openURL(whatsapp),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 20),
-                        decoration: BoxDecoration(
-                            gradient: buttonGradi,
-                            // border: Border.all(
-                            //     width: 2.0, color: theme.primaryColor),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text(
-                          'Discord Community ${Provider.of<UserProvider>(context).user.length}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: textColor,
+                          Space.y(2.w)!,
+                          // SizedBox(height: AppDimensions.space(3)),
+                        ],
+                      ),
+                      InkWell(
+                        onTap: () => {},
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 20),
+                          decoration: BoxDecoration(
+                              gradient: buttonGradi,
+                              // border: Border.all(
+                              //     width: 2.0, color: theme.primaryColor),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text(
+                            'Discord Community ${Provider.of<UserProvider>(context).user.length}',
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: textColor,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Container(color: Colors.white.withOpacity(0.2), height: 1),
-                Space.y(2.w)!,
-                const Text("Follow us on the Socail Media Platforms"),
-                Space.y(2.w)!,
-                Wrap(
-                    alignment: WrapAlignment.center,
-                    runSpacing: 50,
-                    children: contactUtils
-                        .asMap()
-                        .entries
-                        .map((e) => IconButton(
-                              icon: Image.network(
-                                e.value.icon,
-                                color: theme.textColor,
-                              ),
-                              onPressed: () {},
-                              highlightColor: Colors.white54,
-                              iconSize: 21,
-                            ))
-                        .toList()),
-              ],
+                    ],
+                  ),
+                  Container(color: Colors.white.withOpacity(0.2), height: 1),
+                  Space.y(2.w)!,
+                  const Text("Follow us on the Socail Media Platforms"),
+                  Space.y(2.w)!,
+                  Wrap(
+                      alignment: WrapAlignment.center,
+                      runSpacing: 50,
+                      children: contactUtils
+                          .asMap()
+                          .entries
+                          .map((e) => IconButton(
+                                icon: Image.network(
+                                  e.value.icon,
+                                  color: theme.textColor,
+                                ),
+                                onPressed: () {},
+                                highlightColor: Colors.white54,
+                                iconSize: 21,
+                              ))
+                          .toList()),
+                ],
+              ),
             ),
           ),
           // Space.y!,

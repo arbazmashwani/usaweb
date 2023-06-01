@@ -8,6 +8,8 @@ class _NavbarDesktop extends StatefulWidget {
 }
 
 class _NavbarDesktopState extends State<_NavbarDesktop> {
+  bool signinhover = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -15,13 +17,12 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
     var theme = Theme.of(context);
     return BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
       return Container(
-        height: 300,
         color: Colors.white,
         child: Column(
           children: [
             Container(
               height: 50,
-              color: Color(0xffF2F5FC),
+              color: const Color(0xffF2F5FC),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -47,80 +48,125 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
             ),
             Container(
               height: 100,
+              width: double.infinity,
               color: Colors.white,
-              child: Row(
-                children: [
-                  const NavBarLogo(),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.chat,
-                        color: Color(0xff8D99B5),
-                      ),
-                      Text(
-                        "Live Chat",
-                        style: TextStyle(
-                            color: Color(0xff8D99B5),
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: 30,
-                  )
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Space.xm!,
-                ...NavBarUtils.names.asMap().entries.map(
-                      (e) => NavBarActionButton(
-                        label: e.value,
-                        index: e.key,
-                      ),
-                    ),
-                // Space.x!,
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 50, right: 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 40,
-                      width: 80,
-                      child: ColorChageButton(
-                        text: 'Login',
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePagelogin(
-                                        email: "",
-                                      )));
-                        },
-                      ),
+                    const NavBarLogo(),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          onHover: (isHovering) {
+                            if (isHovering) {
+                              setState(() => signinhover = true);
+                            } else {
+                              setState(() => signinhover = false);
+                            }
+                          },
+                          child: MaterialButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePagelogin(
+                                          email: "",
+                                        )),
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 100),
+                              width: 130,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: signinhover == true
+                                      ? const Color(0xff1C4BBA)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                      color: const Color(0xff1C4BBA))),
+                              child: Center(
+                                child: Text(
+                                  "Sign In",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: signinhover != true
+                                        ? const Color(0xff1C4BBA)
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 100),
+                          width: 130,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: const Color(0xff3CA348),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: const Color(0xff3CA348),
+                              )),
+                          child: Center(
+                            child: Text(
+                              "Register",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: 5,
+              ),
+            ),
+            const Divider(
+              color: Colors.black38,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 70, right: 10, top: 10),
+              child: Row(
+                children: [
+                  ...NavBarUtils.names.asMap().entries.map(
+                        (e) => NavBarActionButton(
+                          label: e.value,
+                          index: e.key,
+                        ),
+                      ),
+                  // Space.x!,
+
+                  // Space.x!,
+                ],
+              ),
+            ),
+            Container(
+              height: 50,
+              decoration: const BoxDecoration(
+                color: Color(0xff1C4BBA),
+              ),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Enrich your trade with  "),
+                    Text(
+                      "Alec Markarian!",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
-                InkWell(
-                    onTap: () {
-                      context
-                          .read<ThemeCubit>()
-                          .updateTheme(!state.isDarkThemeOn);
-                    },
-                    child: Image.network(
-                      state.isDarkThemeOn
-                          ? IconUrls.darkIcon
-                          : IconUrls.lightIcon,
-                      height: 30,
-                      width: 20,
-                      color: state.isDarkThemeOn ? Colors.black : Colors.white,
-                    )),
-                // Space.x!,
-              ],
+              ),
             ),
           ],
         ),

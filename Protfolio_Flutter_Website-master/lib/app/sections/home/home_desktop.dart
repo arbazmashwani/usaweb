@@ -19,54 +19,88 @@ class HomeDesktop extends StatelessWidget {
 
     return SizedBox(
       height: 80.h,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 10.h),
-              width: 55.w,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(yourname,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      )),
-                  Space.y(1.w)!,
-                  // Row(
-                  //   crossAxisAlignment: CrossAxisAlignment.end,
-                  //   children: [
-                  //     AnimatedTextKit(
-                  //       isRepeatingAnimation: true,
-                  //       repeatForever: true,
-                  //       animatedTexts: desktopList,
-                  //     ),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 10.w),
-                    child: Text(miniDescription,
-                        style: TextStyle(
-                          fontSize: isFontSize(context, 18),
-                          fontWeight: FontWeight.w400,
-                          color: theme.textColor.withOpacity(0.6),
-                        )),
-                  ),
-                  Space.y(1.w)!,
-                  ColorChageButton(
-                    text: 'Membership Plans',
-                    onTap: () {},
-                  ),
-                ],
-              ),
+      child: Stack(
+        children: [
+          SizedBox(
+            height: 80.h,
+            child: Image.network(
+              "https://en.myfxchoice.com/wp-content/uploads/2021/12/home.png",
+              fit: BoxFit.cover,
             ),
-            const ZoomAnimations(),
-          ],
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  width: 55.w,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          height: 40,
+                          width: 500,
+                          color: const Color(0xff0C2150),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.celebration, color: Color(0xff80A5ff)),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Providing Competitive ans superior service for over 10 years",
+                                style: TextStyle(color: Color(0xff80A5ff)),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                        height: 40,
+                      ),
+
+                      Text(yourname,
+                          style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600,
+                          )),
+                      Space.y(1.w)!,
+                      // Row(
+                      //   crossAxisAlignment: CrossAxisAlignment.end,
+                      //   children: [
+                      //     AnimatedTextKit(
+                      //       isRepeatingAnimation: true,
+                      //       repeatForever: true,
+                      //       animatedTexts: desktopList,
+                      //     ),
+                      //   ],
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 10.w),
+                        child: Text(miniDescription,
+                            style: TextStyle(
+                              fontSize: isFontSize(context, 18),
+                              fontWeight: FontWeight.w400,
+                              color: theme.textColor.withOpacity(0.6),
+                            )),
+                      ),
+                      Space.y(1.w)!,
+                      ColorChageButton(
+                        text: 'Membership Plans',
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                const ZoomAnimations(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

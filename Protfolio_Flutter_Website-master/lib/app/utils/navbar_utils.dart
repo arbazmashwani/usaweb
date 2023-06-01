@@ -6,7 +6,7 @@ class NavBarUtils {
     // 'ABOUT',
     'Education',
     'Algorithm ',
-    "Alec Markarian - About ",
+    "Alec Markarian",
     'Contact',
   ];
 
