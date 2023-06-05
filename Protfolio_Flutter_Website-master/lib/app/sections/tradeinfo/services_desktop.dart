@@ -133,13 +133,86 @@ class TradeinfoDesktop extends StatefulWidget {
 class TradeinfoDesktopState extends State<TradeinfoDesktop> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     return Container(
       child: Column(
         children: [
-          Space.y(4.w)!,
+          Space.y(2.w)!,
+          Padding(
+            padding: const EdgeInsets.only(left: 100, right: 100),
+            child: Container(
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              height: 300,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0xff081636),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  Image.network(
+                    "https://en.myfxchoice.com/wp-content/themes/fxnew/images/home/home-banner.png",
+                    fit: BoxFit.cover,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "For MetaTrader",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              "Our Revolutionary Algorithm Most Powerful Trading Algo",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
+                      )),
+                      Expanded(
+                          child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 100),
+                              width: 160,
+                              height: 50,
+                              child: Center(
+                                child: Text(
+                                  "Join Algo Room",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff3CA348),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: const Color(0xff3CA348),
+                                  )),
+                            ),
+                          ],
+                        ),
+                      )),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          Space.y(2.w)!,
           const Padding(
             padding: EdgeInsets.only(left: 200, right: 200, top: 100),
             child: Text(
@@ -353,7 +426,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "Trading Signals",
+                                                  servicelist[e],
                                                   style: TextStyle(
                                                       color:
                                                           hoverboollistof[e] ==
@@ -457,7 +530,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [3, 4, 5]
+                  children: [0, 1, 2]
                       .map((e) => Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
@@ -471,12 +544,12 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                     if (isHovering) {
                                       if (mounted) {
                                         setState(
-                                            () => hoverboollistof[e] = true);
+                                            () => hoverboollistof1[e] = true);
                                       }
                                     } else {
                                       if (mounted) {
                                         setState(
-                                            () => hoverboollistof[e] = false);
+                                            () => hoverboollistof1[e] = false);
                                       }
                                     }
                                   },
@@ -491,7 +564,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                       width: 100,
                                       height: 300,
                                       decoration: BoxDecoration(
-                                          color: hoverboollistof[e] == true
+                                          color: hoverboollistof1[e] == true
                                               ? const Color(0xff1C4BBA)
                                               : Colors.white,
                                           borderRadius:
@@ -518,10 +591,10 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "Trading Signals",
+                                                  servicelist1[e],
                                                   style: TextStyle(
                                                       color:
-                                                          hoverboollistof[e] ==
+                                                          hoverboollistof1[e] ==
                                                                   true
                                                               ? Colors.white
                                                               : Colors.black,
@@ -545,7 +618,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                                       style: TextStyle(
                                                           overflow: TextOverflow
                                                               .ellipsis,
-                                                          color: hoverboollistof[
+                                                          color: hoverboollistof1[
                                                                       e] ==
                                                                   true
                                                               ? Colors.white
@@ -575,7 +648,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                                     child: Text(
                                                       "Fint out more",
                                                       style: TextStyle(
-                                                          color: hoverboollistof[
+                                                          color: hoverboollistof1[
                                                                       e] ==
                                                                   true
                                                               ? Colors.white
@@ -592,11 +665,12 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                                   Icon(
                                                     Icons.arrow_forward,
                                                     size: 15,
-                                                    color: hoverboollistof[e] ==
-                                                            true
-                                                        ? const Color(
-                                                            0xff1C4BBA)
-                                                        : Color(0xff8d99b5),
+                                                    color:
+                                                        hoverboollistof1[e] ==
+                                                                true
+                                                            ? const Color(
+                                                                0xff1C4BBA)
+                                                            : Color(0xff8d99b5),
                                                   )
                                                 ],
                                               ),
@@ -607,7 +681,7 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
                                                 left: 20, right: 20),
                                             child: Container(
                                               height: 5,
-                                              color: hoverboollistof[e] != true
+                                              color: hoverboollistof1[e] != true
                                                   ? const Color(0xff1C4BBA)
                                                   : Colors.white,
                                             ),
@@ -628,5 +702,9 @@ class TradeinfoDesktopState extends State<TradeinfoDesktop> {
     );
   }
 
-  List hoverboollistof = List.generate(6, (index) => false);
+  List hoverboollistof = List.generate(3, (index) => false);
+  List hoverboollistof1 = List.generate(3, (index) => false);
+
+  List<String> servicelist = ["Trading Signals", "Book", "Videos"];
+  List<String> servicelist1 = ["Educational Content", "Algorithom", "PDF"];
 }

@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:mysite/app/sections/Authentication/dashboard.dart';
+import 'package:mysite/app/sections/Authentication/loginmain.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/configs/connection/bloc/connected_bloc.dart';
 import 'package:mysite/core/configs/connection/network_check.dart';
@@ -54,6 +56,9 @@ class MySite extends StatelessWidget {
                         }
                         return const Center(child: CircularProgressIndicator());
                       });
+                },
+                "/dashboard": (context) {
+                  return DashboardScreen(index: 0);
                 }
               },
             );

@@ -23,20 +23,39 @@ class ContactDesktop extends StatelessWidget {
 
       child: Column(
         children: [
-          const CustomSectionHeading(text: "\nJoin Our Community"),
-          Space.y(1.w)!,
-          const CustomSectionSubHeading(
-            text: "If you want to avail our services , Subsrcribe service now",
+          const Padding(
+            padding: EdgeInsets.only(left: 200, right: 200, top: 100),
+            child: Text(
+              "\nJoin Our Community",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50),
+            ),
           ),
+
+          Space.y(1.w)!,
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "If you want to avail our services , Subsrcribe service now",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
+              ),
+            ],
+          ),
+
           Space.y(2.w)!,
           Padding(
             padding: const EdgeInsets.only(left: 50, right: 50),
             child: Container(
               padding: EdgeInsets.all(size.width * 0.05).copyWith(bottom: 10),
               decoration: BoxDecoration(
-                gradient: theme.contactCard,
+                color: const Color(0xff1C4BBA),
                 borderRadius: BorderRadius.circular(30),
-                boxShadow: [blackColorShadow],
               ),
               child: Column(
                 // crossAxisAlignment: CrossAxisAlignment.end,
@@ -79,9 +98,9 @@ class ContactDesktop extends StatelessWidget {
                               // border: Border.all(
                               //     width: 2.0, color: theme.primaryColor),
                               borderRadius: BorderRadius.circular(10)),
-                          child: Text(
-                            'Discord Community ${Provider.of<UserProvider>(context).user.length}',
-                            style: const TextStyle(
+                          child: const Text(
+                            'Discord Community',
+                            style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: textColor,

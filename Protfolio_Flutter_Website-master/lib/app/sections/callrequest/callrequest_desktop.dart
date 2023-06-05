@@ -153,7 +153,8 @@ class CallrequestDesktop extends StatelessWidget {
           padding: const EdgeInsets.all(40.0),
           child: Container(
             height: 400,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -200,12 +201,18 @@ class CallrequestDesktop extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
                 MaterialButton(
                   onPressed: () {},
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(20)),
                     height: 50,
                     width: 100,
-                    child: Center(
+                    child: const Center(
                       child: Text("Submit"),
                     ),
                   ),

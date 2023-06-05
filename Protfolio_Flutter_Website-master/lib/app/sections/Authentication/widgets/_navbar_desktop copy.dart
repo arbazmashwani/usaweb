@@ -21,14 +21,6 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
         child: Row(
           children: [
             const NavBarLogo(),
-            Space.xm!,
-            ...NavBarUtils.names.asMap().entries.map(
-                  (e) => NavBarActionButton(
-                    label: e.value,
-                    index: e.key,
-                  ),
-                ),
-            // Space.x!,
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -42,9 +34,7 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePagelogin(
-                                    email: '',
-                                  )));
+                              builder: (context) => HomePagelogin()));
                     },
                   ),
                 ),

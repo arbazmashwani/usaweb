@@ -1,7 +1,8 @@
 String hellotag = '';
 
 String yourname =
-    "Become a consistently profitable trader with our daily market analysis, education, leading algo-based indicator, unparalelled signals, and community";
+    "Get Market Leading And Consistently Profitable Signals,Daily Market Forecasts, Educational Videos, Books And Access To Cutting-Edge Algorithms";
+// "Become a consistently profitable trader with our daily market analysis, education, leading algo-based indicator, unparalelled signals, and community";
 // String hometitle2 = "A Mobile Application\nDeveloper";
 
 String animationtxt2 = "10+ year of Experience";
@@ -13,7 +14,8 @@ String animationtxt5 = "100+ Tradeable assets";
 String contactHeadding = "Join over 1 million traders worldwide";
 String contactSubHeadding = "Sign up for your account now.";
 //
-String miniDescription = "Trade forex pairs, Gold, and derived.";
+String miniDescription =
+    "We also have a community and 1 on mentorship services with Alec Markarian, Explore your options, we are here to catalyze success in your trading journey, sign up for a free account for access to Alec Markarian's 'The Elite Trader' Book";
 
 String servicesSubHeading =
     "Trade the way you want with 3 flexible trade Plans";

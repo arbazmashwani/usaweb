@@ -15,12 +15,12 @@ class BodyUtils {
     const HomePage(),
     // About(),
     const Portfolio(),
+
+    const ReviewsPage(),
     const TradeInformationPage(),
     const Services(),
     const ExperiencePage(),
     const CallRequest(),
-
-    const ReviewsPage(),
 
     const Contact(),
     const Footer(),
@@ -84,51 +84,40 @@ class BodyUtils {
                                   iconSize: 21,
                                 ))
                             .toList()),
-                  ))
+                  )),
                 ],
-              ),
-            )),
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.only(left: 100, right: 100),
-              child: Container(
-                child: Row(
-                  children: [
-                    Container(
-                      width: 10,
-                      color: Colors.red,
-                    ),
-                    Expanded(
-                        child: Column(
-                      children: [
-                        Row(
-                          children: const [
-                            Expanded(
-                                child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                  "Please Remember That CFds and products and offered on this website are complex derriative  and may ot be suitable for all clients , trading in these products carries a substantial risk of losing money"),
-                            )),
-                          ],
-                        ),
-                        Row(
-                          children: const [
-                            Expanded(
-                                child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                  "Please Remember That CFds and products and offered on this website are complex derriative  and may ot be suitable for all clients , trading in these products carries a substantial risk of losing money"),
-                            )),
-                          ],
-                        )
-                      ],
-                    ))
-                  ],
-                ),
               ),
             )),
             const SizedBox(
               height: 20,
+            ),
+            Container(
+              height: 100,
+              width: 400,
+              child: Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Developed by ",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        "",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const Text(
+                      " © 2023",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
             )
           ],
         ),

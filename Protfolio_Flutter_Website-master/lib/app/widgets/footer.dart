@@ -15,7 +15,11 @@ class Footer extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Developed by "),
+            const Text(
+              "Developed by ",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
             InkWell(
               onTap: () {},
               child: const Text(
@@ -23,7 +27,11 @@ class Footer extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            const Text(" © 2023"),
+            const Text(
+              " © 2023",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),

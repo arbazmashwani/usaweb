@@ -184,31 +184,77 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         children: [
                           Checkbox(
-                              activeColor: const Color(0xff343A40),
+                              activeColor: heaveytheme,
                               value: saveme,
                               onChanged: (valu) {
                                 setState(() {
                                   saveme = !saveme;
                                 });
                               }),
-                          const Text(
+                          Text(
                             "Remember Me",
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: heaveytheme),
                           )
                         ],
                       ),
                       const SizedBox(
                         height: 64,
                       ),
-                      actionButton("Log In", () async {}, kPrimaryColor),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: heaveytheme,
+                              borderRadius: BorderRadius.circular(10)),
+                          width: double.infinity,
+                          height: 52,
+                          child: const Center(
+                            child: Text(
+                              "Login",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
-                      actionButton("Google", () async {
-                        _toggleLoading();
-                        await _signInWithGoogle();
-                        _toggleLoading();
-                      }, Colors.red),
+                      MaterialButton(
+                        onPressed: () async {
+                          _toggleLoading();
+                          await _signInWithGoogle();
+                          _toggleLoading();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border:
+                                  Border.all(color: Colors.grey[300] as Color)),
+                          width: double.infinity,
+                          height: 52,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Image.asset(
+                                    "assets/imgs/google.png",
+                                  )),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Continue with Google",
+                                style: TextStyle(
+                                    color: Color(0xff746F6F),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       const SizedBox(
                         height: 32,
                       ),

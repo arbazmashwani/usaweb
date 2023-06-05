@@ -5,8 +5,6 @@ class ExperienceDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Container(

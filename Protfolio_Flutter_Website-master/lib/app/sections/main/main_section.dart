@@ -20,6 +20,7 @@ import 'package:mysite/app/widgets/navbar_actions_button.dart';
 import 'package:mysite/app/widgets/navbar_logo.dart';
 import 'package:mysite/core/res/responsive.dart';
 import 'package:mysite/core/theme/cubit/theme_cubit.dart';
+import 'package:mysite/dahboardscreens/livechat/livechat.dart';
 import 'package:mysite/messenger/messagingSerive.dart';
 import 'package:mysite/messenger/notifications.dart';
 import 'package:mysite/my_site.dart';
@@ -77,9 +78,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     App.init(context);
-    final drawerProvider = Provider.of<DrawerProvider>(context);
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: !Responsive.isDesktop(context) ? const _MobileDrawer() : null,
@@ -112,7 +111,7 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 5870,
+                      height: 6570,
                       child: _Body(),
                     ),
                   ],

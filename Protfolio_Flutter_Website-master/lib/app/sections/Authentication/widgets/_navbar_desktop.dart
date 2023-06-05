@@ -19,16 +19,9 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
             EdgeInsets.symmetric(horizontal: size.width / 10, vertical: 12),
         color: theme.navBarColor,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const NavBarLogo(),
-            Space.xm!,
-            ...NavBarUtils.names.asMap().entries.map(
-                  (e) => NavBarActionButton(
-                    label: e.value,
-                    index: e.key,
-                  ),
-                ),
-            // Space.x!,
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -42,27 +35,13 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePagelogin(
-                                    email: "",
-                                  )));
+                              builder: (context) => HomePagelogin()));
                     },
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              width: 5,
-            ),
-            InkWell(
-                onTap: () {
-                  context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
-                },
-                child: Image.network(
-                  state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
-                  height: 30,
-                  width: 20,
-                  color: state.isDarkThemeOn ? Colors.black : Colors.white,
-                )),
+
             // Space.x!,
           ],
         ),
@@ -92,7 +71,7 @@ class _NavBarTablet extends StatelessWidget {
             icon: const Icon(Icons.menu),
           ),
           Space.xm!,
-          const NavBarLogo(),
+
           // Space.x1!,
         ],
       ),

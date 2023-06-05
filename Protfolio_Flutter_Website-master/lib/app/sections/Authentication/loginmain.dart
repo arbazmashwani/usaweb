@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mysite/app/sections/Authentication/action_button.dart';
+import 'package:mysite/app/sections/Authentication/dashboard.dart';
 import 'package:mysite/app/sections/Authentication/login.dart';
 import 'package:mysite/app/utils/navbar_utils.dart';
 import 'package:mysite/app/widgets/color_chage_btn.dart';
@@ -22,9 +23,10 @@ part 'widgets/_navbar_desktop copy.dart';
 part 'widgets/_mobile_drawer copy.dart';
 
 class HomePagelogin extends StatefulWidget {
-  HomePagelogin({super.key, required this.email});
+  HomePagelogin({
+    super.key,
+  });
   static const String route = '/login';
-  String email;
 
   @override
   _HomePageloginState createState() => _HomePageloginState();
@@ -40,14 +42,6 @@ class _HomePageloginState extends State<HomePagelogin> {
       backgroundColor: Colors.white,
       key: drawerProvider.key,
       extendBodyBehindAppBar: true,
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(120),
-        child: Responsive(
-          desktop: _NavbarDesktop(),
-          mobile: _NavBarTablet(),
-          tablet: _NavBarTablet(),
-        ),
-      ),
       body: SizedBox(
         width: size.width,
         height: size.height,
@@ -58,27 +52,13 @@ class _HomePageloginState extends State<HomePagelogin> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: kPrimaryColor,
+                  color: heaveytheme,
                 ),
                 Container(
                     height: double.infinity,
                     width: size.width / 2,
                     color: Colors.grey[100]),
               ],
-            ),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(32),
-                child: Text(
-                  "Welcome",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -95,7 +75,7 @@ class _HomePageloginState extends State<HomePagelogin> {
                           fontWeight: FontWeight.bold,
                         )),
                     Text(
-                      "The Enlightened",
+                      "The Enlighteneds",
                       style: GoogleFonts.bebasNeue(
                         color: Colors.white,
                         fontSize: 30,
@@ -105,13 +85,13 @@ class _HomePageloginState extends State<HomePagelogin> {
                 ),
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.all(32),
+                padding: EdgeInsets.all(32),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.copyright,
                       color: Colors.grey,

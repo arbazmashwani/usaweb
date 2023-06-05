@@ -15,8 +15,7 @@ class ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     // double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    var theme = Theme.of(context);
+
     return InkWell(
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,

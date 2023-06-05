@@ -12,9 +12,6 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    // theme
-    var theme = Theme.of(context);
     return BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
       return Container(
         color: Colors.white,
@@ -27,16 +24,31 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         Icons.chat,
                         color: Color(0xff8D99B5),
                       ),
-                      Text(
-                        "Live Chat",
-                        style: TextStyle(
-                            color: Color(0xff8D99B5),
-                            fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          showGeneralDialog(
+                            context: context,
+                            barrierColor: Colors.black54,
+                            barrierDismissible: true,
+                            barrierLabel: 'Label',
+                            pageBuilder: (_, __, ___) {
+                              return Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: ChatDialogContent());
+                            },
+                          );
+                        },
+                        child: Text(
+                          "Live Chat",
+                          style: TextStyle(
+                              color: Color(0xff8D99B5),
+                              fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
                   ),
@@ -72,9 +84,7 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePagelogin(
-                                          email: "",
-                                        )),
+                                    builder: (context) => HomePagelogin()),
                               );
                             },
                             child: AnimatedContainer(

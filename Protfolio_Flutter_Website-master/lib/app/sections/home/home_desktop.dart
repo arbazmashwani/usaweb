@@ -1,4 +1,3 @@
-import 'package:mysite/app/sections/home/widgets/animation_text.dart';
 import 'package:mysite/core/animations/zoom_animation.dart';
 import 'package:mysite/core/res/responsive_size.dart';
 import 'package:sizer/sizer.dart';
@@ -18,7 +17,7 @@ class HomeDesktop extends StatelessWidget {
     var theme = Theme.of(context);
 
     return SizedBox(
-      height: 80.h,
+      height: 85.h,
       child: Stack(
         children: [
           SizedBox(
@@ -44,8 +43,8 @@ class HomeDesktop extends StatelessWidget {
                           height: 40,
                           width: 500,
                           color: const Color(0xff0C2150),
-                          child: Row(
-                            children: const [
+                          child: const Row(
+                            children: [
                               SizedBox(
                                 width: 10,
                               ),
@@ -54,18 +53,18 @@ class HomeDesktop extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                "Providing Competitive ans superior service for over 10 years",
+                                "The ERA OF The Elite Trader",
                                 style: TextStyle(color: Color(0xff80A5ff)),
                               ),
                             ],
                           )),
-                      SizedBox(
-                        height: 40,
+                      const SizedBox(
+                        height: 10,
                       ),
 
                       Text(yourname,
                           style: const TextStyle(
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.w600,
                           )),
                       Space.y(1.w)!,
@@ -90,7 +89,7 @@ class HomeDesktop extends StatelessWidget {
                       ),
                       Space.y(1.w)!,
                       ColorChageButton(
-                        text: 'Membership Plans',
+                        text: 'Join the Trading Room',
                         onTap: () {},
                       ),
                     ],
